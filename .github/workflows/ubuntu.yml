@@ -1,11 +1,11 @@
-name: ubuntu
+name: ubunturdp
 on: 
   workflow_dispatch:
    inputs:
      auth:
         description: 'GRDP Authorization Code'
         required: true
-        default: 'paste here'
+        default: 'paste your code here'
   
 defaults:
   run:
