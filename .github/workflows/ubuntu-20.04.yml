@@ -5,14 +5,14 @@ on:
      auth:
         description: 'GRDP Authorization Code'
         required: true
-        default: 'paste your code here'
+        default: 'DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AX4XfWhVjYC0Q_QocsbRX_X4l_56SrjOZKKcNGb_AP7b8hRv8gvuU02K0al1GG8GOVb6aQ" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)'
   
 defaults:
   run:
     shell: bash
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-21.04
     steps:
     - name: Creating User to Login
       run: |
