@@ -4,9 +4,6 @@
 This is just for Testing and Deployment of Applications, and Debugging Purpose. I do not encourage to misuse of Github Actions! **I am not respossible if your  account gets banned!**
 </br>
 
-**Original Reposity**: [Ubuntu-Grdp](https://github.com/Area69Lab/Ubuntu-Grdp)
-**Credits**:     [Area69Lab](https://github.com/Area69Lab/)
-
 
 # Things Required
 
