@@ -1,4 +1,4 @@
-name: ubunturdp
+name: ubunturdptest
 on: 
   workflow_dispatch:
    inputs:
