@@ -2,6 +2,9 @@
 
 name: Ubuntu_22.04
 on:
+  push:
+    branches:
+     - master
   workflow_dispatch:
     inputs:
      auth:
