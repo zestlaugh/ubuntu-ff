@@ -1,9 +1,8 @@
 name: ubunturdptest
 on:
-  push:
-    branches-ignore:
-      - main  
-
+  workflow_dispatch:
+    inputs:
+      msg:
 defaults:
   run:
     shell: bash
