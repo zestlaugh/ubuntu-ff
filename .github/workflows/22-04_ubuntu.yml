@@ -5,6 +5,8 @@ on:
   workflow_dispatch:
 
     runs-on: ubuntu-22.04
+ jobs:
+  ssh:
      steps:
     - name: Checkout
       uses: actions/checkout@v3
