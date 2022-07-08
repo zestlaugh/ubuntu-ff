@@ -3,10 +3,19 @@
 name: Ubuntu_22.04
 on:
   workflow_dispatch:
-
+    inputs:
+     auth:
+        description: 'GRDP Authorization Code'
+        required: false
+        default: 'paste your code here'
+  
+defaults:
+  run:
+    shell: bash
+jobs:
+  build:
     runs-on: ubuntu-22.04
- jobs:
-  ssh:
+
      steps:
     - name: Checkout
       uses: actions/checkout@v3
