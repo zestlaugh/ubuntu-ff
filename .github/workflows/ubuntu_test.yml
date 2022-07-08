@@ -1,7 +1,12 @@
 name: ubunturdptest
-on: 
-  workflow_dispatch:
-   inputs:
+
+  on:
+
+  push:
+
+    branches-ignore:
+
+      - main
 
         
 
