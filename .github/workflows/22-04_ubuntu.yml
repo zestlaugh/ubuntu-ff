@@ -12,7 +12,7 @@ defaults:
     shell: bash
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
     - name: Creating User to Login
       run: |
@@ -66,6 +66,7 @@ jobs:
             bash install.sh
             source ~/.profile
             sudo adduser ubuntu chrome-remote-desktop
+            
     - name: generate script
       run: |
            touch setup.sh
@@ -81,20 +82,5 @@ jobs:
            send "123456\r"
            expect eof
            '
-      - name: Start SSH via ngrok
-      continue-on-error: true
-      timeout-minutes: 99999999999999999999999999999999999999999999999999
-      uses: P3TERX/ssh2actions@main
-      with:
-        mode: ngrok
-      env:
-        # You can find this token here: https://dashboard.ngrok.com/auth/your-authtoken
-        NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
-        # ngrok server region [us, eu, au, ap, sa, jp, in] (optional, default: us)
-        NGROK_REGION: in
-        # This password you will use when authorizing via SSH
-        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-        # Send connection info to Telegram (optional)
-        #TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        #TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-
+          - name: Create SSH Access
+      uses: mxschmitt/action-tmate@v3
