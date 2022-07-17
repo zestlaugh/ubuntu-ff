@@ -24,7 +24,7 @@ jobs:
       run: |
             sudo useradd -m ubuntu
             sudo adduser ubuntu sudo
-            echo 'ubuntu:1234' | sudo chpasswd
+            echo 'ubuntu1122:1234' | sudo chpasswd
             sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
             sudo apt-get update
             sudo apt-get install xfce4-terminal -y
@@ -51,7 +51,7 @@ jobs:
             wget https://raw.githubusercontent.com/creationix/nvm/master/install.sh
             bash install.sh
             source ~/.profile
-            sudo adduser Ubuntu chrome-remote-desktop
+            sudo adduser ubuntu chrome-remote-desktop
     - name: generate script
       run: |
            touch setup.sh
