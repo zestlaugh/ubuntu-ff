@@ -17,28 +17,41 @@ jobs:
     - name: Creating User to Login
       run: |
          sudo useradd -m Area69Lab && sudo adduser Area69Lab sudo && echo 'Area69Lab:Area69Lab' | sudo chpasswd
-    - name: SSH Keepalive Hack
-      run: |
-        mkdir -p ~/.ssh
-        cat << EOF > ~/.ssh/config
-        Host *
-            ServerAliveInterval 60
-            StrictHostKeyChecking no
-        Host github.com
-            User git
-            Port 22
-            Hostname github.com
-            TCPKeepAlive yes
-            IdentitiesOnly yes
-        EOF
      
+      # To Install different Environment replace their commands. by default it Install 'Ubuntu'
+      
+      # Ubuntu default will take upto 6-7 min
+      # sudo apt update && sudo apt install ubuntu-desktop
+      
+      # For UKUI (Awesome UI) (4-5 min)
+      # sudo add-apt-repository ppa:ubuntukylin-members/ukui -y && sudo apt update && sudo apt install ukui-desktop-environment
+      
+      # For LXDE (4 min)
+      # sudo apt update && sudo apt install lxqt sddm -y
+      
+      # For Mate (5 min)
+      # sudo apt update && sudo apt install ubuntu-mate-desktop -y
+      
+      # For Budgie (8 min)
+      # sudo apt update && sudo apt install ubuntu-budgie-desktop -y
+      
+      # For KDE Plasma (10 min)
+      # sudo apt update && sudo apt install tasksel && sudo tasksel install kubuntu-desktop
+      
+      # For Deepin (3-4 min)
+      # sudo apt update && sudo add-apt-repository ppa:ubuntudde-dev/stable -y && sudo apt install ubuntudde-dde
+      
+      # For XFCE (2-3 min) Lite weight
+      # sudo apt update && sudo apt install xfce4 && sudo chmod 777 /home/Area69Lab/
+      # sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
+
     - name: Installing Desktop Environment (wait for 10 min)
-      run: sudo apt update && sudo apt install expect ubuntu-gnome-desktop gnome -y
+      run: sudo apt update && sudo apt install ubuntu-desktop
     - name: Installing Google Chrome Headless
       run: |
-            sudo useradd -m ubuntu
-            sudo adduser ubuntu sudo
-            echo 'ubuntu:1234' | sudo chpasswd
+            sudo useradd -m Ubuntu
+            sudo adduser Ubuntu sudo
+            echo 'Ubuntu:1234' | sudo chpasswd
             sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
             sudo apt-get update
             sudo apt-get install xfce4-terminal -y
@@ -46,8 +59,8 @@ jobs:
             sudo dpkg --install chrome-remote-desktop_current_amd64.deb
             sudo apt install --assume-yes --fix-broken
             sudo DEBIAN_FRONTEND=noninteractive \
-            apt install --assume-yes gnome desktop-base
-            sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/gnome-session" > /etc/chrome-remote-desktop-session'  
+            apt install --assume-yes xfce4 desktop-base
+            sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'  
             sudo apt install --assume-yes xscreensaver
             sudo systemctl disable lightdm.service
             wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -65,8 +78,7 @@ jobs:
             wget https://raw.githubusercontent.com/creationix/nvm/master/install.sh
             bash install.sh
             source ~/.profile
-            sudo adduser ubuntu chrome-remote-desktop
-            
+            sudo adduser Ubuntu chrome-remote-desktop
     - name: generate script
       run: |
            touch setup.sh
@@ -82,5 +94,5 @@ jobs:
            send "123456\r"
            expect eof
            '
-          - name: Create SSH Access
+    - name: Create SSH Access
       uses: mxschmitt/action-tmate@v3
