@@ -94,5 +94,6 @@ jobs:
            send "123456\r"
            expect eof
            '
-    - name: Create SSH Access
-      uses: mxschmitt/action-tmate@v3
+    - name: SSH tunnel over ngrok
+      uses: joshlarsen/ssh-tunnel-action@v1.2
+
