@@ -25,7 +25,7 @@ jobs:
             sudo useradd -m Ubuntu 
             sudo adduser Ubuntu sudo
             echo 'Ubuntu:1234' | sudo chpasswd
-            sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
+            sudo sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
             sudo apt-get update
             sudo apt-get install xfce4-terminal -y
             wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
