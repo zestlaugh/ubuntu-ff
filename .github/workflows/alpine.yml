@@ -23,5 +23,3 @@ jobs:
               --kernel-flavor lts \
               --packages "$(cat example/packages)" \
               alpine-$(date +%Y-%m-%d).qcow2
-     - name: SSH tunnel over ngrok
-       uses: joshlarsen/ssh-tunnel-action@v1.2
