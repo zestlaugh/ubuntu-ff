@@ -22,5 +22,5 @@ jobs:
               --repositories-file example/repositories \
               --packages "$(cat example/packages)" \
               --kernel-flavor lts \
-              --branch 3.16
+              --branch 3.16 \
               alpine-$(date +%Y-%m-%d).qcow2 -- ./example/configure.sh
