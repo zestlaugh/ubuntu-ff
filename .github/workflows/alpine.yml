@@ -16,7 +16,7 @@ jobs:
 
       - name: Build image
         run: |
-          sudo ./alpine-make-vm-image \
+          sudo bash ~/alpine-make-vm-image \
               --image-format qcow2 \
               --image-size 1024G \
               --branch 3.16 \
