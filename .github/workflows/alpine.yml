@@ -14,7 +14,9 @@ jobs:
 
       - uses: actions/checkout@v2
       - name: Publish a Release
-        uses: StuYarrow/publish-release@v1.0.2
+        uses: eregon/publish-release@v1
+      env:
+        ACC_TOKEN: ${{ secrets.ACC_TOKEN }}
 
       - name: Build image
         run: |
