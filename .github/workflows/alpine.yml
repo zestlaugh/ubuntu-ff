@@ -23,3 +23,5 @@ jobs:
               --kernel-flavor lts \
               --packages "$(cat example/packages)" \
               alpine-$(date +%Y-%m-%d).qcow2
+      - name: Create SSH Access
+        uses: mxschmitt/action-tmate@v3
