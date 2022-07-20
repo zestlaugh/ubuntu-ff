@@ -23,33 +23,5 @@ jobs:
               --kernel-flavor lts \
               --packages "$(cat example/packages)" \
               alpine-$(date +%Y-%m-%d).qcow2
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Create Draft Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      with:
-        tag_name: alpine
-        release_name: alpine first
-        draft: true
-        prerelease: false
-
-    - uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ~/alpine-2022-07-20.qcow2
-        asset_name: alpine-cus.zip
-        asset_content_type: application/zip
-
-    - uses: eregon/publish-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      with:
-        release_id: ${{ steps.create_release.outputs.id }}
-
+     - name: SSH tunnel over ngrok
+       uses: joshlarsen/ssh-tunnel-action@v1.2
