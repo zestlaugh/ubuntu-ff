@@ -1,4 +1,4 @@
-name: build_alpine
+name: CI
 on:
   - pull_request
   - push
@@ -6,20 +6,20 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-      steps:
-    - name: Install qemu-utils
+    steps:
+      - name: Install qemu-utils
         run: |
           sudo apt-get update
           sudo apt-get install qemu-utils wget -y; cd ~/ ;wget https://raw.githubusercontent.com/alpinelinux/alpine-make-vm-image/v0.9.0/alpine-make-vm-image
 
       - uses: actions/checkout@v3
-      
+
       - name: Build image
         run: |
-         sudo bash ~/alpine-make-vm-image \
+          sudo ./alpine-make-vm-image \
               --image-format qcow2 \
               --image-size 1024G \
-              --packages "$(cat example/packages)" \
-              --kernel-flavor lts \
               --branch 3.16 \
+              --kernel-flavor lts \
+              --packages "$(cat example/packages)" \
               alpine-$(date +%Y-%m-%d).qcow2
