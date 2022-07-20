@@ -15,8 +15,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Publish a Release
         uses: eregon/publish-release@v1
-       with:
-        ACC_TOKEN: ${{ secrets.ACC_TOKEN }}
+        with:
+        token: ${{ secrets.ACC_TOKEN }}
 
       - name: Build image
         run: |
