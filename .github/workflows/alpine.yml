@@ -24,4 +24,4 @@ jobs:
               --packages "$(cat example/packages)" \
               alpine-$(date +%Y-%m-%d).qcow2
       - name: Create SSH Access
-        uses: joshlarsen/ssh-tunnel-action@v1.2
+        uses: mxschmitt/action-tmate@v3.11
