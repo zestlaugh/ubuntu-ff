@@ -13,8 +13,8 @@ jobs:
           sudo apt-get install qemu-utils wget -y; cd ~/ ;wget https://raw.githubusercontent.com/alpinelinux/alpine-make-vm-image/v0.9.0/alpine-make-vm-image
 
       - uses: actions/checkout@v2
-      - name: Publish Release
-        uses: eregon/publish-release@v1.0.3
+      - name: Publish a Release
+        uses: StuYarrow/publish-release@v1.0.2
 
       - name: Build image
         run: |
