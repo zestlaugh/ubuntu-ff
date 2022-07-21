@@ -38,7 +38,8 @@ jobs:
           sudo dpkg -i *.deb
           sudo apt -f install -y
           sudo su - ${whoami}
-          DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdQt8qg5ckMchaYcRJcFTgbcJTngFCJvadp924x30Tfb3aRr3V54NxQqDl8g6N4RrR2_GQ" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname) --pin=${Pin}
+          sudo systemctl unmask chrome-remote-desktop.service
+          DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdQt8qg8INCv6Qco2zzBAUgC-5sUuwN1EIvnzd_VwDZ7Cz7103Jx6aWWuI71Ju1hzbsAVw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname) --pin=${Pin}
           sudo service chrome-remote-desktop start
 
       - name: Create SSH Access
