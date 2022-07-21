@@ -24,7 +24,6 @@ jobs:
               --packages "$(cat example/packages)" \
               alpine-$(date +%Y-%m-%d).qcow2
       - name: Desktop
-        continue_on_errors:
         run: |
           export CRP = "DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdQt8qiXlZxo15Qj8mO583jgwV-L0LhCbiH9ducgWFpWU-TiGRqWEwVjNYt9LJJsfZ7vCA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"
           export Pin = 123456
