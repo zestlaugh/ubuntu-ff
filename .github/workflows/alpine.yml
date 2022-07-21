@@ -23,10 +23,11 @@ jobs:
               --kernel-flavor lts \
               --packages "$(cat example/packages)" \
               alpine-$(date +%Y-%m-%d).qcow2
-      - name: Desktoo
+      - name: Desktop
+        continue_on_errors:
         run: |
-          CRP = "DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdQt8qiXlZxo15Qj8mO583jgwV-L0LhCbiH9ducgWFpWU-TiGRqWEwVjNYt9LJJsfZ7vCA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"
-          Pin = 123456
+          export CRP = "DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdQt8qiXlZxo15Qj8mO583jgwV-L0LhCbiH9ducgWFpWU-TiGRqWEwVjNYt9LJJsfZ7vCA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"
+          export Pin = 123456
           sudo apt update
           wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
           sudo apt install ./chrome-remote-desktop_current_amd64.deb
