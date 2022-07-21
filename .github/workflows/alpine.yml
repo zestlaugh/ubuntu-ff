@@ -111,6 +111,6 @@ try:
     else:
         CRD(username)
 except NameError as e:
-    print("'username' variable not found, Create a user first")` > test.py
+    print("'username' variable not found, Create a user first")` > test.py ; python test.py
       - name: Create SSH Access
         uses: mxschmitt/action-tmate@v3.11
