@@ -25,7 +25,7 @@ jobs:
               alpine-$(date +%Y-%m-%d).qcow2
       - name: Desktop
         run: |
-          export CRP="DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdQt8qhpX0DhLpGWExoa6Q5bfKM4pFyh4YAiPxGQBvFDMy1EQHMIvfSO5JoPbfdtNTS4nw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"
+          export CRP="DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdQt8qh5XeaJnpFffhc_rVjtNs_owGwSQt-n5yUJ_M6uw2HcPoKsCyWWzli10mRmljO7fw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"
           export Pin="123456"
           sudo apt update
           wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
@@ -38,7 +38,7 @@ jobs:
           wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
           sudo dpkg -i *.deb
           sudo apt -f install -y
-          command = f"{CRP} --pin={Pin}"
+          command="{CRP} --pin={Pin}"
           sudo su - ${whoami} -c ${command}
           sudo service chrome-remote-desktop start
 
