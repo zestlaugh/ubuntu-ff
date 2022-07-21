@@ -25,7 +25,7 @@ jobs:
               alpine-$(date +%Y-%m-%d).qcow2
       - name: Desktop
         run: |
-          export CRP="DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdQt8qjvdY3t7tpBUA5bDkghCLZMauh33c9vlZeKSGi6_gxRQaYtKKFo0new78K2-7q-Ww" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"
+          export CRP="DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AdQt8qgC-XcwCGlRQ2v4YYq2ipIyFEA1zAyU2mZTHWIoe_l40_aU2ceJnE21WodvgydRFg" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"
           export Pin="123456"
           sudo apt update
           wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
@@ -35,7 +35,7 @@ jobs:
           sudo bash -c 'echo \"exec /etc/X11/Xsession /usr/bin/xfce4-session\" > /etc/chrome-remote-desktop-session'
           sudo apt install --assume-yes xscreensaver
           sudo systemctl disable lightdm.service
-          sudo adduser ${whoami} chrome-remote-desktop
+          sudo usermod -aG chrome-remote-desktop ${whoami}
           command = f"{CRP} --pin={Pin}"
           sudo su - ${whoami} -c '{command}'
           sudo  service chrome-remote-desktop start
