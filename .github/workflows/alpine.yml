@@ -34,6 +34,7 @@ jobs:
               alpine-$(date +%Y-%m-%d).qcow2
 
       - name: Create SSH Access
+        run: su ash
         uses: mdelillo/ssh-server-action@v1.0.0
         timeout-minutes: 9999
         with:
