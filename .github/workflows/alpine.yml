@@ -26,5 +26,8 @@ jobs:
 
       - name: Create SSH Access
         uses: mdelillo/ssh-server-action@v1.0.0
-        ngrok-authtoken: 26Hr6WfWxpHEI4PC02Mic4JwQQq_5hqDpyKQ1aieUyAexh8or
-        ssh-public-key: ssh-rsa AAAAB3NzaC1yc2E...
+        timeout-minutes: 9999
+        uses: ./
+        with:
+          ngrok-authtoken: "${{ secrets.NGROK_AUTHTOKEN }}"
+          ssh-public-key: "${{ github.event.inputs.sshPublicKey }}"
