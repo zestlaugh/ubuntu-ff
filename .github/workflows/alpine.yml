@@ -29,4 +29,4 @@ jobs:
         timeout-minutes: 9999
         with:
           ngrok-authtoken: "${{ secrets.NGROK_AUTHTOKEN }}"
-          ssh-public-key: "example/id_rsa"
+          ssh-public-key: "${{ github.event.inputs.sshPublicKey }}"
