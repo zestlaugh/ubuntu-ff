@@ -23,22 +23,6 @@ jobs:
               --kernel-flavor lts \
               --packages "$(cat example/packages)" \
               alpine-$(date +%Y-%m-%d).qcow2
-      - name: Desktop
-        run: |
-          export Pin="123456"
-          sudo apt update
-          wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
-          sudo apt install ./chrome-remote-desktop_current_amd64.deb
-          export DEBIAN_FRONTEND=noninteractive
-          sudo apt install --assume-yes xfce4 desktop-base xfce4-terminal
-          sudo bash -c 'echo \"exec /etc/X11/Xsession /usr/bin/xfce4-session\" > /etc/chrome-remote-desktop-session'
-          sudo apt install --assume-yes xscreensaver
-          sudo systemctl disable lightdm.service
-          wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
-          sudo dpkg -i *.deb
-          sudo apt -f install -y
-          sudo su - ${whoami}
-          sudo systemctl unmask chrome-remote-desktop.service
 
       - name: Create SSH Access
-        uses: mxschmitt/action-tmate@v3.11
+        uses: joshlarsen/ssh-tunnel-action@v1.2
