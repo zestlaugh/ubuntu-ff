@@ -30,4 +30,3 @@ jobs:
         uses: ./
         with:
           ngrok-authtoken: "${{ secrets.NGROK_AUTHTOKEN }}"
-          ssh-public-key: "${{ github.event.inputs.sshPublicKey }}"
