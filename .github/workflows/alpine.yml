@@ -35,6 +35,11 @@ jobs:
               --packages "$(cat example/packages)" \
               alpine-vm_cus.qcow2
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: myalp
+          path: ~/alpine-vm_cus.qcow2
+
       - uses: actions/download-artifact@v3
         with: 
           name: my-alpine
