@@ -1,4 +1,4 @@
-name: CI
+name: Ci (alpine)
 on:
   workflow_dispatch:
     inputs:
@@ -32,7 +32,7 @@ jobs:
               --branch 3.16 \
               --kernel-flavor lts \
               --packages "$(cat example/packages)" \
-              alpine-$(date +%Y-%m-%d).qcow2
+              alpine-vm_cus.qcow2
 
       - name: Create SSH Access
         uses: mdelillo/ssh-server-action@v1.0.0
