@@ -21,6 +21,7 @@ jobs:
           sudo useradd -s /usr/bin/bash -m ash && sudo adduser ash sudo && echo 'ash:ash' | sudo chpasswd
           sudo bash
           sudo su ash
+          cd ~/
 
       - uses: actions/checkout@v3
 
@@ -33,6 +34,11 @@ jobs:
               --kernel-flavor lts \
               --packages "$(cat example/packages)" \
               alpine-vm_cus.qcow2
+
+      - uses: actions/download-artifact@v3
+        with: 
+          name: my-alpine
+          path: ~/alpine-vm_cus.qcow2
 
       - name: Create SSH Access
         uses: mdelillo/ssh-server-action@v1.0.0
