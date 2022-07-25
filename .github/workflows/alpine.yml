@@ -35,15 +35,11 @@ jobs:
               --packages "$(cat example/packages)" \
               alpine-vm_cus.qcow2
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: myalp
-          path: ~/alpine-vm_cus.qcow2
+      - name: Sum important stuff
+        run: |
+           export GZIP=-9
+           tar cvzf alpine_comp.tar.gz ~/alpine-vm_cus.qcow2
 
-      - uses: actions/download-artifact@v3
-        with: 
-          name: my-alpine
-          path: ~/alpine-vm_cus.qcow2
 
       - name: Create SSH Access
         uses: mdelillo/ssh-server-action@v1.0.0
