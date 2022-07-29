@@ -4,17 +4,17 @@ on:
     inputs:
       sshPublicKey:
         description: 'SSH public key'
-        required: true
+        required: flase
       exitCode:
         description: 'When set to non-zero, a step will fail causing the SSH server to be started'
-        required: true
+        required: flase
         default: "0"
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-      - name: Install qemu-utils
+      - name: Install Required Packages
         run: |
           sudo apt-get update
           sudo apt-get install qemu-utils wget -y; cd ~/ ;wget https://raw.githubusercontent.com/alpinelinux/alpine-make-vm-image/v0.9.0/alpine-make-vm-image
@@ -37,7 +37,6 @@ jobs:
 
       - name: Create SSH Access
         uses: mdelillo/ssh-server-action@v1.0.0
-        timeout-minutes: 9999
         with:
           ngrok-authtoken: "${{ secrets.NGROK_AUTHTOKEN }}"
           ssh-public-key: "${{ github.event.inputs.sshPublicKey }}"
