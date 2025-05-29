@@ -1,6 +1,6 @@
 name: ubunturdp
 
-on: 
+on:
   workflow_dispatch:
     inputs:
       auth:
@@ -11,6 +11,7 @@ on:
 defaults:
   run:
     shell: bash
+
 
 jobs:
   build:
